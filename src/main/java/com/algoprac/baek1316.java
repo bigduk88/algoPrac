@@ -20,11 +20,28 @@ package com.algoprac;
 import java.util.Scanner;
 
 public class baek1316 {
+
     public static void main(String[] args) {
         Scanner stdIn = new Scanner(System.in);
 
-        String word = stdIn.toString();
+        int i = 0;
+        int n = stdIn.nextInt();
+        int answer = n;
 
+        for (int testCase = 0; testCase < n; testCase++) {
+            String word = stdIn.next();
+            boolean[] checker = new boolean[26];
 
+            for (i = 1; i < word.length(); i++) {
+                if (word.charAt(i - 1) != word.charAt(i)) {
+                    if (checker[word.charAt(i) - 97] == true) {
+                        answer --;
+                        break;
+                    }
+                }
+            }
+            checker[word.charAt(i-1) - 97] = true;
+        }
+        System.out.println(answer);
     }
 }
